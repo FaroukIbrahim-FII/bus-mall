@@ -53,11 +53,14 @@ function Product(name, src) {
     this.votes = 0;
     this.shown = 0;
 
-    products.push(this);
+    Product.allProducts.push(this);
 
 }
 
-let products = [];
+
+
+Product.allProducts = [];
+console.log(Product.allProducts);
 
 // Creating instances
 
@@ -85,7 +88,7 @@ new Product('wine-glass', 'img/wine-glass.jpg');
 
 // from W3 Schools
 function randomNum() {
-    return Math.floor(Math.random() * products.length);
+    return Math.floor(Math.random() * Product.allProducts.length);
 }
 
 // console.log(randomNum());
@@ -102,14 +105,14 @@ function viewImages() {
     }
 
     // linking the images
-    leftImage.src = products[leftImageIndex].src;
-    midImage.src = products[midImageIndex].src;
-    rightImage.src = products[rightImageIndex].src;
+    leftImage.src = Product.allProducts[leftImageIndex].src;
+    midImage.src = Product.allProducts[midImageIndex].src;
+    rightImage.src = Product.allProducts[rightImageIndex].src;
 
     // counter for shown images
-    products[leftImageIndex].shown++;
-    products[midImageIndex].shown++;
-    products[rightImageIndex].shown++;
+    Product.allProducts[leftImageIndex].shown++;
+    Product.allProducts[midImageIndex].shown++;
+    Product.allProducts[rightImageIndex].shown++;
 }
 
 viewImages();
@@ -129,37 +132,31 @@ function click(event) {
     midImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)";
     rightImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)";
 
-    if (userTry < maxTry) {
+    if (userTry <= maxTry) {
         text.textContent = "";
 
         if (event.target.id === 'leftImage') {
             leftImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.11)";
-            products[leftImageIndex].votes++;
+            Product.allProducts[leftImageIndex].votes++;
             //   console.log(goats[leftImageIndex]);
 
         } else if (event.target.id === 'midImage') {
             midImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.11)";
-            products[midImageIndex].votes++;
+            Product.allProducts[midImageIndex].votes++;
             //   console.log(goats[rightImageIndex]);
         } else if (event.target.id === 'rightImage') {
             rightImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.11)";
-            products[rightImageIndex].votes++;
+            Product.allProducts[rightImageIndex].votes++;
         } else {
-
             text.textContent = "please choose an image.";
             text.style.textAlign = "center";
-
-
-
         }
 
         viewImages();
 
-
     } else {
         button.addEventListener('click', buttonClick);
-
-
+        divImageElement.removeEventListener('click', click);
     }
 }
 
@@ -167,17 +164,14 @@ function click(event) {
 
 function buttonClick() {
 
-    for (let i = 0; i < products.length; i++) {
+    for (let i = 0; i < Product.allProducts.length; i++) {
         // const element = goats[i];
 
         let listElement = document.createElement('li');
 
         list.appendChild(listElement);
 
-        listElement.textContent = `${products[i].name} had ${products[i].votes} votes, and was seen ${products[i].shown} times.`;
-
-
-
+        listElement.textContent = `${Product.allProducts[i].name} had ${Product.allProducts[i].votes} votes, and was seen ${Product.allProducts[i].shown} times.`;
     }
 
 }
