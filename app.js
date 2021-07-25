@@ -14,7 +14,7 @@ let leftImage = document.createElement('img');
 leftImage.style.width = "200pt";
 leftImage.style.height = "200pt";
 leftImage.style.margin = "50pt";
-leftImage.style.marginLeft = "180pt";
+leftImage.style.marginLeft = "20%";
 leftImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)";
 leftImage.style.borderRadius = "15pt";
 leftImage.id = "leftImage";
@@ -53,14 +53,14 @@ function Product(name, src) {
     this.votes = 0;
     this.shown = 0;
 
-    Product.allProducts.push(this);
+    Product.all.push(this);
 
 }
 
 
 
-Product.allProducts = [];
-console.log(Product.allProducts);
+Product.all = [];
+console.log(Product.all);
 
 // Creating instances
 
@@ -88,7 +88,7 @@ new Product('wine-glass', 'img/wine-glass.jpg');
 
 // from W3 Schools
 function randomNum() {
-    return Math.floor(Math.random() * Product.allProducts.length);
+    return Math.floor(Math.random() * Product.all.length);
 }
 
 // console.log(randomNum());
@@ -105,14 +105,14 @@ function viewImages() {
     }
 
     // linking the images
-    leftImage.src = Product.allProducts[leftImageIndex].src;
-    midImage.src = Product.allProducts[midImageIndex].src;
-    rightImage.src = Product.allProducts[rightImageIndex].src;
+    leftImage.src = Product.all[leftImageIndex].src;
+    midImage.src = Product.all[midImageIndex].src;
+    rightImage.src = Product.all[rightImageIndex].src;
 
     // counter for shown images
-    Product.allProducts[leftImageIndex].shown++;
-    Product.allProducts[midImageIndex].shown++;
-    Product.allProducts[rightImageIndex].shown++;
+    Product.all[leftImageIndex].shown++;
+    Product.all[midImageIndex].shown++;
+    Product.all[rightImageIndex].shown++;
 }
 
 viewImages();
@@ -137,16 +137,16 @@ function click(event) {
 
         if (event.target.id === 'leftImage') {
             leftImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.11)";
-            Product.allProducts[leftImageIndex].votes++;
+            Product.all[leftImageIndex].votes++;
             //   console.log(goats[leftImageIndex]);
 
         } else if (event.target.id === 'midImage') {
             midImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.11)";
-            Product.allProducts[midImageIndex].votes++;
+            Product.all[midImageIndex].votes++;
             //   console.log(goats[rightImageIndex]);
         } else if (event.target.id === 'rightImage') {
             rightImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.11)";
-            Product.allProducts[rightImageIndex].votes++;
+            Product.all[rightImageIndex].votes++;
         } else {
             text.textContent = "please choose an image.";
             text.style.textAlign = "center";
@@ -164,14 +164,14 @@ function click(event) {
 
 function buttonClick() {
 
-    for (let i = 0; i < Product.allProducts.length; i++) {
+    for (let i = 0; i < Product.all.length; i++) {
         // const element = goats[i];
 
         let listElement = document.createElement('li');
 
         list.appendChild(listElement);
 
-        listElement.textContent = `${Product.allProducts[i].name} had ${Product.allProducts[i].votes} votes, and was seen ${Product.allProducts[i].shown} times.`;
+        listElement.textContent = `${Product.all[i].name} had ${Product.all[i].votes} votes, and was seen ${Product.all[i].shown} times.`;
     }
 
 }
