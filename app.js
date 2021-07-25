@@ -9,14 +9,13 @@ button.style.marginLeft = "47%";
 // let rightImage = document.getElementById('right-image');
 
 let leftImage = document.createElement('img');
-
 // from W3 Schools
 leftImage.style.width = "200pt";
 leftImage.style.height = "200pt";
-leftImage.style.margin = "50pt";
-leftImage.style.marginLeft = "20%";
+leftImage.style.margin = "25pt";
 leftImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)";
 leftImage.style.borderRadius = "15pt";
+leftImage.style.borderStyle = "solid"
 leftImage.id = "leftImage";
 // console.log(leftImage);
 divImageElement.appendChild(leftImage);
@@ -24,18 +23,20 @@ divImageElement.appendChild(leftImage);
 let midImage = document.createElement('img');
 midImage.style.width = "200pt";
 midImage.style.height = "200pt";
-midImage.style.margin = "50pt";
+midImage.style.margin = "25pt";
 midImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)";
 midImage.style.borderRadius = "15pt";
+midImage.style.borderStyle = "solid"
 midImage.id = "midImage";
 divImageElement.appendChild(midImage);
 
 let rightImage = document.createElement('img');
 rightImage.style.width = "200pt";
 rightImage.style.height = "200pt";
-rightImage.style.margin = "50pt";
+rightImage.style.margin = "25pt";
 rightImage.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)";
 rightImage.style.borderRadius = "15pt";
+rightImage.style.borderStyle = "solid"
 rightImage.id = "rightImage";
 divImageElement.appendChild(rightImage);
 
@@ -172,6 +173,7 @@ function buttonClick() {
         list.appendChild(listElement);
 
         listElement.textContent = `${Product.all[i].name} had ${Product.all[i].votes} votes, and was seen ${Product.all[i].shown} times.`;
+        list.style.borderStyle="solid";
     }
 
 }
