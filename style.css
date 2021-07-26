@@ -60,7 +60,7 @@ p:first-child{
       /* border-style: solid; */
       padding: 1%;
   }
-  div{
+  #images-div{
       float: right;
   }
 
