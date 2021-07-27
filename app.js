@@ -60,14 +60,13 @@ function Product(name, src) {
     this.shown = 0;
 
     Product.all.push(this);
-    namesArr.push(this.name)
+    namesArr.push(this.name);
 
 }
 
 
 
 Product.all = [];
-console.log(Product.all);
 
 // Creating instances
 
@@ -91,7 +90,30 @@ new Product('unicorn', 'img/unicorn.jpg');
 new Product('water-can', 'img/water-can.jpg');
 new Product('wine-glass', 'img/wine-glass.jpg');
 
+console.log(Product.all);
+
 // console.log(products);
+
+
+function updateStorage() {
+
+    let stringArray = JSON.stringify(Product.all);
+    // console.log(stringArray);
+
+    localStorage.setItem('product', stringArray);
+
+}
+
+function getProducts() {
+    // get data from local storage
+    let data = localStorage.getItem('product');
+    let parseArray = JSON.parse(data);
+    if (parseArray !== null) {
+        Product.all = parseArray;
+
+        // console.log(Product.all);
+    }
+}
 
 // from W3 Schools
 function randomNum() {
@@ -168,8 +190,9 @@ function click(event) {
             text.textContent = "please choose an image.";
             text.style.textAlign = "center";
         }
-
+        updateStorage();
         viewImages();
+
 
     } else {
         button.addEventListener('click', buttonClick);
@@ -182,13 +205,19 @@ function click(event) {
         // console.log(votArray);
         // console.log(showArray);
 
+
+        // console.log(Product.all);
     }
+
+
 }
 
 
 
-function buttonClick() {
 
+function buttonClick() {
+    // list.remove();
+    // list.empty();
     for (let i = 0; i < Product.all.length; i++) {
         // const element = goats[i];
 
@@ -279,3 +308,7 @@ function showChart() {
     );
 
 }
+
+
+
+getProducts();
