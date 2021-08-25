@@ -68,6 +68,10 @@ function Product(name, src) {
 
 Product.all = [];
 
+// Product.prototype.inFunction(){
+//     sdtghrydhlknhrti
+// }
+
 // Creating instances
 
 new Product('bag', 'img/bag.jpg');
@@ -94,6 +98,9 @@ console.log(Product.all);
 
 // console.log(products);
 
+// let stringArray = JSON.stringify(Product.all);
+
+
 
 function updateStorage() {
 
@@ -104,14 +111,21 @@ function updateStorage() {
 
 }
 
+
+
+
+
+
 function getProducts() {
     // get data from local storage
     let data = localStorage.getItem('product');
     let parseArray = JSON.parse(data);
+    localVar = 0; // local variable
+    console.log(data);
     if (parseArray !== null) {
         Product.all = parseArray;
+        
 
-        // console.log(Product.all);
     }
 }
 
@@ -151,7 +165,6 @@ function viewImages() {
     Product.all[midImageIndex].shown++;
     Product.all[rightImageIndex].shown++;
 }
-
 
 
 viewImages();
@@ -312,3 +325,22 @@ function showChart() {
 
 
 getProducts();
+
+
+// 'use strict';
+
+// let form=document.getElementById('car');
+// let nameInput=document.getElementById('cars');
+// // form.appendChild(nameInput);
+// let age =document.getElementById('carss');
+// // form.appendChild(age);
+// let button=document.getElementById('Submit');
+// // form.appendChild(button);
+// button.addEventListener("click",RangeRover);
+
+// function RangeRover(event){
+//     event.preventDefault();
+//     let name=event.target.cars.value;
+//     localStorage.setItem('name',name);
+//     console.log(event);
+// }
